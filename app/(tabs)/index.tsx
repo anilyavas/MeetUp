@@ -3,13 +3,13 @@ import { View, FlatList } from 'react-native';
 
 import events from '../../assets/events.json';
 
-import Event from '~/components/Event';
+import EventListItem from '~/components/Event';
 
 export default function Home() {
   return (
     <>
       <Stack.Screen options={{ title: 'Events' }} />
-      <FlatList data={events} renderItem={(event) => <Event event={event} />} />
+      <EventListItem event={events[2]} />
     </>
   );
 }
