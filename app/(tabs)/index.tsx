@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <>
       <Stack.Screen options={{ title: 'Events' }} />
+      <FlatList data={events} renderItem={(event) => <Event event={event} />} />
     </>
   );
 }
