@@ -87,7 +87,7 @@ export default function Profile() {
 
   return (
     <View className="flex-1 gap-3 bg-white p-5">
-      <Stack.Screen options={{ title: 'Tab Two' }} />
+      <Stack.Screen options={{ title: 'Profile' }} />
       <TextInput
         editable={false}
         value={session.user.email}
