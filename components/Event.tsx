@@ -4,6 +4,8 @@ import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 
+import SupaImage from './SupaImage';
+
 import { supabase } from '~/utils/supabase';
 
 export default function EventListItem({ event }) {
@@ -35,7 +37,12 @@ export default function EventListItem({ event }) {
             <Text className="text-gray-700">{event.location}</Text>
           </View>
           {/* Event image */}
-          <Image source={{ uri: event.image_uri }} className="aspect-video w-2/5 rounded-xl" />
+          {event.image_uri && (
+            <SupaImage
+              source={{ uri: event.image_uri }}
+              className="aspect-video w-2/5 rounded-xl"
+            />
+          )}
         </View>
         {/* Footer */}
         <View className="flex-row gap-3">
