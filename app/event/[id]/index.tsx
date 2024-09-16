@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import { Text, View, Image, Pressable, ActivityIndicator } from 'react-native';
 
 import { useAuth } from '~/context/AuthProvider';
+import { Attendance } from '~/types/db';
 import { supabase } from '~/utils/supabase';
 
 export default function EventPage() {
-  const [event, setEvent] = useState(null);
+  const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(false);
-  const [attendance, setAttendance] = useState(null);
+  const [attendance, setAttendance] = useState<Attendance | null>(null);
   const { user } = useAuth();
   const { id } = useLocalSearchParams();
 
@@ -35,7 +36,7 @@ export default function EventPage() {
   const joinEvent = async () => {
     const { data, error } = await supabase
       .from('attendance')
-      .insert({ user_id: user.id, event_id: event.id })
+      .insert({ user_id: user.id, event_id: event?.id })
       .select()
       .single();
 
