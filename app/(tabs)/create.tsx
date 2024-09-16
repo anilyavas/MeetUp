@@ -1,8 +1,10 @@
+import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Text, View, TextInput, Pressable, Alert } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
+import Avatar from '~/components/Avatar';
 import { useAuth } from '~/context/AuthProvider';
 import { supabase } from '~/utils/supabase';
 
