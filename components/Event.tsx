@@ -2,7 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { View, Text, Image, Pressable } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 
 import SupaImage from './SupaImage';
 
