@@ -25,8 +25,6 @@ export default function Home() {
       lat: 41.461486,
       long: 32.794617,
     });
-    console.log(JSON.stringify(data, null, 2));
-    console.log(error);
     if (data) {
       setEvents(data);
     }
