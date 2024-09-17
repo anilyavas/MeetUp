@@ -21,7 +21,15 @@ export default function CreateEvent() {
     setLoading(true);
     const { data, error } = await supabase
       .from('events')
-      .insert([{ date: date.toISOString(), title, description, user_id: user.id }])
+      .insert([
+        {
+          date: date.toISOString(),
+          title,
+          description,
+          user_id: user.id,
+          location_point: 'POINT(31.794617 41.461486)',
+        },
+      ])
       .select()
       .single();
 
