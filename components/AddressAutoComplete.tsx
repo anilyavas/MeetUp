@@ -2,6 +2,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Text, TextInput, View, FlatList, Pressable } from 'react-native';
 
+import { useAuth } from '~/context/AuthProvider';
 import { getSuggestions, retrieveDetails } from '~/utils/AddressAutoComplete';
 
 export default function AddressAutoComplete({ onSelected }) {
@@ -9,8 +10,10 @@ export default function AddressAutoComplete({ onSelected }) {
   const [suggestions, setSuggestions] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState();
 
-  const search = () => {
-    const data = getSuggestions(input);
+  const { session } = useAuth();
+
+  const search = async () => {
+    const data = await getSuggestions(input, session.access_token);
     setSuggestions(data.suggestions);
   };
 
@@ -19,7 +22,7 @@ export default function AddressAutoComplete({ onSelected }) {
     setInput(suggestion.name);
     setSuggestions([]);
 
-    const details = await retrieveDetails(suggestion.mapbox_id);
+    const details = await retrieveDetails(suggestion.mapbox_id, session.access_token);
     onSelected(details);
   };
 
